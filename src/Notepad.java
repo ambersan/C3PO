@@ -1,45 +1,63 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class Notepad {
 
-	//Arraylist of notes takes two elements-- 
-	//Date: Cannot be changed, developed upon posting.
+	//ArrayList of notes takes two elements--
+	//Date: Cannot be changed by the user, developed upon posting.
 	//Text: the note itself.
-	//Notes can be sorted in order of date, but can maybe be moved around?
+	//Notes sorted from most recent to least recent
 	
 	public static class Note{
-		Date d;
+		String d;
 		String text = null;
-		public Note(Date da, String t) {
+		public Note(String t) {
 			text = t;
-			d = da;
+
 		}
 		public void setText(String t) {
 			text = t;
 		}
-		public void setDate(Date da) {
+		public void setDate(String da) {
 			d = da;
 		}
 		public String getText() {
 			return text;
 		}
-		public Date getDate() {
+		public String getDate() {
 			return d;
 		}
 	}
 	
 	ArrayList<Note> n = new ArrayList<>();
-	public void newNote(Date da, String t) {
-	//	Note note = new Note(da.getDate(), t);
+
+
+	public String dateString(){
+		Date date = Calendar.getInstance().getTime();
+		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+		return df.format(date);
+	}
+
+
+	public void newNote( String t) {
+	Note no = new Note(t);
+	no.setDate(dateString());
+	n.add(0,no);
 	}
 	
-	public void editNote() {
-		
+	public void editNote(int i, String s) {
+		Note toEdit = n.get(i);
+		toEdit.setText(s);
+		toEdit.setDate(dateString());
+		n.remove(i);
+		n.add(0,toEdit);
 	}
 	
-	public void deleteNote() {
-		
+	public void deleteNote(int i) {
+		n.remove(i);
 	}
 	
 }

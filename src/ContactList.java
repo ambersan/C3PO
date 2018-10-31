@@ -56,6 +56,10 @@ public class ContactList {
 	}
 	
 	public ArrayList<Contact> c = new ArrayList<>();
+
+	public Contact getContact(int i){
+		return c.get(i);
+	}
 	
 	public void add(String name, String num, String add, String desc, String email) {
 			Contact con = new Contact(name, num, add, desc, email);
