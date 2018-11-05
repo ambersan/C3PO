@@ -10,17 +10,17 @@ public class ContactListTest {
     @Before
     public void instantiate(){
       c = new ContactList();
-      c.add("Joe", "888", "j street", "tall", "jj@gmail.com");
-        c.add("Ann", "344", "A street", "From Russia", "am@gmail.com");
+      c.add("Joe", "888", "j street", "jj@gmail.com");
+        c.add("Ann", "344", "A street",  "am@gmail.com");
 
     }
 
     @Test
     public void add() {
         assertEquals("Ann", c.c.get(0).getName());
-        c.add("Yohan", null, null, null, null);
+        c.add("Yohan", null, null,  null);
         assertEquals("Yohan", c.c.get(2).getName());
-        c.add("", "8844", "3434", "???","666.com");
+        c.add("", "8844", "3434", "666.com");
         assertEquals(4, c.c.size());
         assertEquals("", c.c.get(0).getName());
     }
@@ -34,9 +34,9 @@ public class ContactListTest {
 
     @Test
     public void edit() {
-    c.edit("Ruth", "989", "jam st.", "A babe", "baseball.com", 0);
+    c.edit("Ruth", "989", "jam st.", "baseball.com", 0);
     assertEquals("Ruth", c.c.get(1).getName());
-    c.edit("Eric", "hurgles", "turgles", "wowie", "internet", 0);
+    c.edit("Eric", "hurgles", "turgles",  "internet", 0);
     assertEquals("Eric", c.c.get(0).getName());
     }
 }

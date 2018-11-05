@@ -10,13 +10,11 @@ public class ContactList {
 		String num = "";
 		String address = "";
 		String email = "";
-		String desc = "";
-		public Contact(String n, String nu, String add, String d, String e){
+		public Contact(String n, String nu, String add, String e){
 			if(!n.equals(null)) {
 				name = n;
 				num = nu;
 				address = add;
-				desc = d;	
 				email = e;
 			}
 		}
@@ -38,9 +36,6 @@ public class ContactList {
 		public void setAdd(String a) {
 			address = a;
 		}
-		public void setDesc(String d) {
-			desc = d;
-		}
 		public String getName() {
 			return name;
 		}
@@ -50,9 +45,6 @@ public class ContactList {
 		public String getAdd() {
 			return address;
 		}
-		public String getDesc() {
-			return desc;
-		}	
 	}
 	
 	public ArrayList<Contact> c = new ArrayList<>();
@@ -61,8 +53,8 @@ public class ContactList {
 		return c.get(i);
 	}
 	
-	public void add(String name, String num, String add, String desc, String email) {
-			Contact con = new Contact(name, num, add, desc, email);
+	public void add(String name, String num, String add,  String email) {
+			Contact con = new Contact(name, num, add, email);
 			int place = 0;
 			for (int i = 0; i < c.size(); i++) {
 				if(c.get(i).name.compareTo(name) < 0) {
@@ -81,17 +73,16 @@ public class ContactList {
 		c.remove(i);
 	}
 	
-	public void edit(String name, String num, String add, String desc, String email, int i) {
+	public void edit(String name, String num, String add, String email, int i) {
 
 		if(name.equals(c.get(i).name)){
 			Contact con = c.get(i);
 			con.setNum(num);
 			con.setAdd(add);
-			con.setDesc(desc);
 			con.setEmail(email);
 		}else{
 			delete(i);
-			add(name, num, add, desc,email);
+			add(name, num, add, email);
 		}
 
 
