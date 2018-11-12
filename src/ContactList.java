@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 
 public class ContactList {
 //Arraylist with elements that can be ordered in any manner.
@@ -98,4 +98,4 @@ public class ContactList {
 	}
 	
 	
-}
+}*/
