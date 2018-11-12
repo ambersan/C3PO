@@ -8,9 +8,10 @@ public class PersonDAO{
 	/* Person Table needs to be created in the Oracle Database.
 	 * create table Person (
 	id Integer,
-	name Varchar(30),
-	address Varchar(30),
+	name Varchar(50),
+	address Varchar(50),
 	phone Integer,
+	cell Integer;
 	email Varchar(50)
 	);*/
 
@@ -92,7 +93,7 @@ public class PersonDAO{
 		try
 		{
 			String sql = "INSERT INTO Person(name, address, " +
-							"phone, email) VALUES (?,?,?,?) ";
+							"phone, cell, email) VALUES (?,?,?,?,?) ";
 
 			// Create a Preparedstatement
  			PreparedStatement ps = con.prepareStatement(sql);
@@ -100,7 +101,8 @@ public class PersonDAO{
 			ps.setString(1, person.getName());
 			ps.setString(2, person.getAddress());
 			ps.setInt(3, person.getPhone());
-			ps.setString(4, person.getEmail());
+			ps.setInt(4, person.getPhone());
+			ps.setString(5, person.getEmail());
 
 			ps.executeUpdate();
 		}
@@ -114,7 +116,7 @@ public class PersonDAO{
 		try
 		{
 			String sql = "UPDATE Person SET name = ?, address=? , " +
-					"phone=? , email=? where id=?";
+					"phone=? , cell=?, email=? where id=?";
 
 			// Create a Prepared statement
  			PreparedStatement ps = con.prepareStatement(sql);
@@ -123,7 +125,8 @@ public class PersonDAO{
 			ps.setString(2 , person.getAddress());
 			ps.setInt(3 , person.getPhone());
 			ps.setString(4 , person.getEmail());
-			ps.setInt(5 , person.getId());
+			ps.setString(5 , person.getEmail());
+			ps.setInt(6 , person.getId());
 
 			ps.executeUpdate();
 		}

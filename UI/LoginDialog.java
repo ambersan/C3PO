@@ -84,7 +84,12 @@ public class LoginDialog extends JDialog {
     						String user = name.getText();
     						@SuppressWarnings("deprecation")
 							String password = pass.getText();
+    						
+    						if (authenticate(user, password))
+    						{
     						//login();
+    						}
+    						
     					}//end comparison
     				}//end keyPressed
     			}//end KeyAdapter

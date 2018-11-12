@@ -1,8 +1,29 @@
 import java.awt.BorderLayout;
 import java.awt.*;
 import javax.swing.*;
+import java.awt.Color;
 
 public class Front extends ButtonClickListener{
+	
+	int BGred = 0;
+	int BGblue = 0;
+	int BGgreen = 0;
+	
+	int FGred = 255;
+	int FGblue = 255;
+	int FGgreen = 255;
+	
+	public void setBGColor(int r, int g, int b, JPanel pane)
+	{
+		Color c = new Color(r, g, b);
+		pane.setBackground(c);
+	}
+	
+	public void setFGColor(int r, int g, int b, JLabel text)
+	{
+		Color c = new Color(r, g, b);
+		text.setForeground(c);
+	}
 	
 	private static void createAndShowGUI() 
 	{
