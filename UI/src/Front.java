@@ -1,14 +1,35 @@
 import java.awt.BorderLayout;
 import java.awt.*;
 import javax.swing.*;
+import java.awt.Color;
 
 public class Front extends ButtonClickListener{
+	
+	int BGred = 0;
+	int BGblue = 0;
+	int BGgreen = 0;
+	
+	int FGred = 255;
+	int FGblue = 255;
+	int FGgreen = 255;
+	
+	public void setBGColor(int r, int g, int b, JPanel pane)
+	{
+		Color c = new Color(r, g, b);
+		pane.setBackground(c);
+	}
+	
+	public void setFGColor(int r, int g, int b, JLabel text)
+	{
+		Color c = new Color(r, g, b);
+		text.setForeground(c);
+	}
 	
 	private static void createAndShowGUI() 
 	{
 		
 		//get user login information
-		//LoginDialog loginScreen = new LoginDialog();
+		LoginDialog loginScreen = new LoginDialog();
 		
 		
 		//*CREATE AND SET UP THE WINDOW
@@ -28,7 +49,7 @@ public class Front extends ButtonClickListener{
 		//JLabel label = new JLabel("GUI here");
 		JLabel header = new JLabel("Computer-based Personal Project and Productions Organizer");
 		JButton toDoBTN = new JButton("To-Do List");
-		JButton calenderBTN = new JButton("Calender");
+		JButton settingsBTN = new JButton("Settings");
 		JButton notebookBTN = new JButton("Notes");
 		JButton contactsBTN = new JButton("Contacts");
 		
@@ -37,18 +58,18 @@ public class Front extends ButtonClickListener{
 		header.setForeground(Color.YELLOW);
 		
 		toDoBTN.setFont(new Font("Arial", Font.PLAIN, 15));
-		calenderBTN.setFont(new Font("Arial", Font.PLAIN, 15));
+		settingsBTN.setFont(new Font("Arial", Font.PLAIN, 15));
 		notebookBTN.setFont(new Font("Arial", Font.PLAIN, 15));
 		contactsBTN.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		//Add listeners to buttons
 		toDoBTN.setActionCommand("todo");
-		calenderBTN.setActionCommand("calender");
+		settingsBTN.setActionCommand("settings");
 		notebookBTN.setActionCommand("notebook");
 		contactsBTN.setActionCommand("contacts");
 		
 		toDoBTN.addActionListener(new ButtonClickListener());
-		calenderBTN.addActionListener(new ButtonClickListener());
+		settingsBTN.addActionListener(new ButtonClickListener());
 		notebookBTN.addActionListener(new ButtonClickListener());
 		contactsBTN.addActionListener(new ButtonClickListener());
 		
@@ -63,7 +84,7 @@ public class Front extends ButtonClickListener{
 		
 		//add the components to their panels and the panels to the frame
 		buttonPane.add(toDoBTN, 0, 0);
-		buttonPane.add(calenderBTN, 0, 1);
+		buttonPane.add(settingsBTN, 0, 1);	
 		buttonPane.add(notebookBTN, 1, 0);
 		buttonPane.add(contactsBTN, 1, 1);
 		headerPane.add(header, BorderLayout.CENTER);
