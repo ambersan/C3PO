@@ -2,6 +2,9 @@ import java.sql.*;
 import java.util.*;
 
 public class ListFiller {
+	
+	//filling the list is the function and database side of the project
+	
 	/*
 
 	//make a list to house the retrieved data

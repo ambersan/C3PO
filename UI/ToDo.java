@@ -1,19 +1,20 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
-
-public class ToDo {
+public class ToDo implements ActionListener{
+	
+	//arraylist of query results and check box objects
+	ArrayList list = new ArrayList ();
+	ArrayList<JCheckBox> checkboxes = new ArrayList<> ();
+	
 	
 	public ToDo()
 	{
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				createAndShowGUI();
-			}
-		});
+		createAndShowGUI();	
 	}
 	
 	
@@ -32,7 +33,7 @@ public class ToDo {
 		
 		
 		//*CREATE THE COMPONENTS
-		JButton newListBTN = new JButton("New List");
+		JButton newListBTN = new JButton("Refresh List");
 		newListBTN.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel title = new JLabel("To Do List");
@@ -46,13 +47,19 @@ public class ToDo {
 		titlePane.setBackground(Color.DARK_GRAY);
 		titlePane.add(title);
 		
+		JTextField field;
+		JPanel pane;
+		
 		//Add listeners to buttons
 		newListBTN.addActionListener( new ActionListener()
 			{
 				@Override 
 				public void actionPerformed( ActionEvent e)
 				{
-					//create new list
+					
+					//retrieve the newest list from database
+					//repaint the list (get the result set from the query and the panel
+					
 				}
 			}//end ActionListener
 		);//end add
@@ -73,9 +80,38 @@ public class ToDo {
 		frame.setVisible(true);
 	}
 	
-	//method for out of order list
-	
-	
-	//method for the in order list
+	//method to update the list
+	public void updateList (ResultSet rs, Panel p, Frame f) throws SQLException
+	{
+		int i = 0;
+		while(rs.next())
+		{
+			Task task = new Task();
+			task.setDescription(rs.getString("description"));
+			task.setSelected(false);
+			
+			list.add(task);
+		}
+		
+		//add each task to a check box item
+		for(Object t : list)
+		{
+			JCheckBox item = new JCheckBox(list.get(i).toString());
+			checkboxes.add(item);
+			p.add(item);
+		}
+		
+		//add the panel to the frame to overwrite previous frame
+		f.add(p);
+		
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

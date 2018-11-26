@@ -12,7 +12,7 @@ public class LoginDialog extends JDialog {
 	
 	JButton okBTN = new JButton("Ok");
 	JButton cancelBTN = new JButton("Cancel");
-	JButton newAccount = new JButton("New Account");
+	//JButton newAccount = new JButton("New Account");
     
     public LoginDialog()
     {
@@ -32,7 +32,7 @@ public class LoginDialog extends JDialog {
     	
     	buttons.add(okBTN);
     	buttons.add(cancelBTN);
-    	buttons.add(newAccount);
+    	//buttons.add(newAccount);
     	
     	//layout the labels and fields for the username and password
     	GridBagConstraints settings = new GridBagConstraints();
@@ -85,10 +85,8 @@ public class LoginDialog extends JDialog {
     						@SuppressWarnings("deprecation")
 							String password = pass.getText();
     						
-    						if (authenticate(user, password))
-    						{
-    						//login();
-    						}
+    						//pass on the strings here
+    						LoginDialog.this.setVisible(false);
     						
     					}//end comparison
     				}//end keyPressed
@@ -100,7 +98,13 @@ public class LoginDialog extends JDialog {
     				@Override 
     				public void actionPerformed( ActionEvent e)
     				{
-    					//login()
+    					String user = name.getText();
+    					@SuppressWarnings("deprecation")
+						String password = pass.getText();
+    					
+    					
+    					//pass on the strings here
+    					LoginDialog.this.setVisible(false);
     				}
     			}//end ActionListener
     	);//end add
@@ -115,6 +119,7 @@ public class LoginDialog extends JDialog {
 			}//end ActionListener
 		);//end add
     	
+    	/*
     	newAccount.addActionListener( new ActionListener()
 			{
 				@Override 
@@ -124,15 +129,9 @@ public class LoginDialog extends JDialog {
 				}
 			}//end ActionListener
 		);//end add
+		*/
 		    	
     }
     
-    public static boolean authenticate(String username, String password) {
-        // hard-coded username and password
-        //if (username.equals("bob") && password.equals("secret")) {
-            return true;
-        //}
-        //return false;
-    }
 	
 }
