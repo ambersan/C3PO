@@ -1,12 +1,16 @@
-
-class CheckboxListItem {
+class Task {
 	
 	//the text shown on screen and checked value
 	private String label;
 	private boolean isSelected = false;
  
 	//setter for text value
-	public CheckboxListItem(String label) 
+	public Task()
+	{
+		this.label = null;
+	}
+	
+	public void setDescription(String label) 
 	{
 		this.label = label;
 	}
