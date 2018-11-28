@@ -1,20 +1,27 @@
-import java.awt.*;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-
-public class Contacts implements ActionListener{
-	
+public class Contacts implements ActionListener
+{
 	ArrayList personsList;
 	PersonDAO pDAO;
-	JLabel Name, Address, Phone, Email;
-	JTextField fName, fAddress, fPhone, fEmail;
+	JLabel Name, Address, Phone, Email, Cell;
+	JTextField fName, fAddress, fPhone, fEmail, fCell;
 	JButton saveBTN, deleteBTN, clearBTN, updateBTN, searchBTN, forwardBTN, backBTN, exitBTN;
 	String name, address, email;
-	int phone;
+	int phone, cell;
 	int recordNumber;
 	Container cPane;
 	JFrame frame;
@@ -25,6 +32,7 @@ public class Contacts implements ActionListener{
 		address = "";
 		email = "";
 		phone = -1;
+		cell = -1;
 		recordNumber = -1;
 		
 		personsList = new ArrayList();
@@ -55,11 +63,13 @@ public class Contacts implements ActionListener{
 		Address = new JLabel("Address:");
 		Phone = new JLabel("Phone Number:");
 		Email = new JLabel("Email:");
+		Cell = new JLabel("Cell Phone: ");
 		
 		fName = new JTextField(50);
 		fAddress = new JTextField(50);
 		fPhone = new JTextField(50);
 		fEmail = new JTextField(50);
+		fCell = new JTextField(50);
 		
 		saveBTN = new JButton("save");
 		deleteBTN = new JButton("delete");
@@ -113,12 +123,12 @@ public class Contacts implements ActionListener{
     	settings6.gridwidth = 7;
     	settings6.fill = GridBagConstraints.BOTH;
     	cPane.add(fPhone, settings6);
-		
+    	
     	GridBagConstraints settings7 = new GridBagConstraints();
     	settings7.insets = new Insets(5, 5, 5, 5);
     	settings7.gridx = 0;
     	settings7.gridy = 3;
-    	cPane.add(Email, settings7);
+    	cPane.add(Cell, settings7);
     	
     	GridBagConstraints settings8 = new GridBagConstraints();
     	settings8.insets = new Insets(5, 5, 5, 5);
@@ -126,55 +136,69 @@ public class Contacts implements ActionListener{
     	settings8.gridy = 3;
     	settings8.gridwidth = 7;
     	settings8.fill = GridBagConstraints.BOTH;
-    	cPane.add(fEmail, settings8);
-    	
+    	cPane.add(fCell, settings8);
+		
     	GridBagConstraints settings9 = new GridBagConstraints();
     	settings9.insets = new Insets(5, 5, 5, 5);
     	settings9.gridx = 0;
     	settings9.gridy = 4;
-    	cPane.add(saveBTN, settings9);
+    	cPane.add(Email, settings9);
     	
     	GridBagConstraints settings10 = new GridBagConstraints();
     	settings10.insets = new Insets(5, 5, 5, 5);
     	settings10.gridx = 1;
     	settings10.gridy = 4;
-    	cPane.add(deleteBTN, settings10);
+    	settings10.gridwidth = 7;
+    	settings10.fill = GridBagConstraints.BOTH;
+    	cPane.add(fEmail, settings10);
     	
     	GridBagConstraints settings11 = new GridBagConstraints();
     	settings11.insets = new Insets(5, 5, 5, 5);
-    	settings11.gridx = 2;
-    	settings11.gridy = 4;
-    	cPane.add(updateBTN, settings11);
+    	settings11.gridx = 0;
+    	settings11.gridy = 5;
+    	cPane.add(saveBTN, settings11);
     	
     	GridBagConstraints settings12 = new GridBagConstraints();
     	settings12.insets = new Insets(5, 5, 5, 5);
-    	settings12.gridx = 0;
+    	settings12.gridx = 1;
     	settings12.gridy = 5;
-    	cPane.add(backBTN, settings12);
+    	cPane.add(deleteBTN, settings12);
     	
     	GridBagConstraints settings13 = new GridBagConstraints();
     	settings13.insets = new Insets(5, 5, 5, 5);
-    	settings13.gridx = 1;
+    	settings13.gridx = 2;
     	settings13.gridy = 5;
-    	cPane.add(searchBTN, settings13);
+    	cPane.add(updateBTN, settings13);
     	
     	GridBagConstraints settings14 = new GridBagConstraints();
     	settings14.insets = new Insets(5, 5, 5, 5);
-    	settings14.gridx = 2;
-    	settings14.gridy = 5;
-    	cPane.add(forwardBTN, settings14);
+    	settings14.gridx = 0;
+    	settings14.gridy = 6;
+    	cPane.add(backBTN, settings14);
     	
     	GridBagConstraints settings15 = new GridBagConstraints();
     	settings15.insets = new Insets(5, 5, 5, 5);
-    	settings15.gridx = 1;		//remove?
+    	settings15.gridx = 1;
     	settings15.gridy = 6;
-    	cPane.add(clearBTN, settings15);
+    	cPane.add(searchBTN, settings15);
     	
     	GridBagConstraints settings16 = new GridBagConstraints();
     	settings16.insets = new Insets(5, 5, 5, 5);
     	settings16.gridx = 2;
     	settings16.gridy = 6;
-    	cPane.add(exitBTN, settings16);
+    	cPane.add(forwardBTN, settings16);
+    	
+    	GridBagConstraints settings17 = new GridBagConstraints();
+    	settings17.insets = new Insets(5, 5, 5, 5);
+    	settings17.gridx = 1;		//remove?
+    	settings17.gridy = 7;
+    	cPane.add(clearBTN, settings17);
+    	
+    	GridBagConstraints settings18 = new GridBagConstraints();
+    	settings18.insets = new Insets(5, 5, 5, 5);
+    	settings18.gridx = 2;
+    	settings18.gridy = 7;
+    	cPane.add(exitBTN, settings18);
     	
     	//add button listeners
     	saveBTN.addActionListener(this);
@@ -231,7 +255,7 @@ public class Contacts implements ActionListener{
 	public void savePerson()
 	{
 		name = fName.getText();
-		name = name.toUpperCase();		//if all names are uppercase they are easier to handle
+		name = name.toUpperCase();		//if all names are upper-case they are easier to handle
 		
 		address = fAddress.getText();
 		email = fEmail.getText();
@@ -241,7 +265,16 @@ public class Contacts implements ActionListener{
 			phone = Integer.parseInt("" + fPhone.getText());
 		}catch (Exception e) 
 		{
-			JOptionPane.showMessageDialog(null,"Please enter a phone number");
+			JOptionPane.showMessageDialog(null,"Please enter a phone number (-1 if N/A)");
+		}
+		
+		try
+		{
+			//try to read the Cell input string as an integer
+			cell = Integer.parseInt("" + fCell.getText());
+		}catch (Exception e) 
+		{
+			JOptionPane.showMessageDialog(null,"Please enter a cell phone number (-1 if N/A)");
 		}
 		
 		//if name not entered
@@ -252,7 +285,7 @@ public class Contacts implements ActionListener{
 		else
 		{
 			//create a PersonInfor with the provided information and pass to DAO to save
-			PersonInfo person = new PersonInfo(name, address, phone, email);
+			PersonInfo person = new PersonInfo(name, address, phone, cell, email);
 			pDAO.savePerson(person);
 			JOptionPane.showMessageDialog(null, "Contact saved!");
 		}
@@ -283,13 +316,13 @@ public class Contacts implements ActionListener{
 			PersonInfo person = (PersonInfo) personsList.get(recordNumber);
 			
 			//set variables to newly entered values
-			id = person.getId();
 			name = fName.getText();
 			address = fAddress.getText();
 			phone = Integer.parseInt(fPhone.getText());
+			cell = Integer.parseInt(fCell.getText());
 			email = fEmail.getText();
 			
-			person = new PersonInfo(id, name, address, phone, email);
+			person = new PersonInfo(name, address, phone, cell, email);
 			pDAO.updatePerson(person);
 			
 			JOptionPane.showMessageDialog(null, "Contact updated");
@@ -331,6 +364,7 @@ public class Contacts implements ActionListener{
 				fName.setText(person.getName());
 				fAddress.setText(person.getAddress());
 				fPhone.setText("" + person.getPhone());
+				fCell.setText("" + person.getCell());
 				fEmail.setText(person.getEmail());
 				
 			}
@@ -365,6 +399,7 @@ public class Contacts implements ActionListener{
 			fName.setText(person.getName());
 			fAddress.setText(person.getAddress());
 			fPhone.setText("" + person.getPhone());
+			fCell.setText("" + person.getCell());
 			fEmail.setText(person.getEmail());
 			
 		}
@@ -395,6 +430,7 @@ public class Contacts implements ActionListener{
 			fName.setText(person.getName());
 			fAddress.setText(person.getAddress());
 			fPhone.setText("" + person.getPhone());
+			fCell.setText("" + person.getCell());
 			fEmail.setText(person.getEmail());
 		}
 	}//end of displayPrevious
@@ -406,6 +442,7 @@ public class Contacts implements ActionListener{
 		fAddress.setText("");
 		fPhone.setText("");
 		fEmail.setText("");
+		fCell.setText("");
 		
 		//reset the search variables
 		recordNumber = -1;
@@ -413,6 +450,5 @@ public class Contacts implements ActionListener{
 		forwardBTN.setEnabled(true);
 		backBTN.setEnabled(true);
 	}
-	
-	
-}//end of Contacts class
+}
+

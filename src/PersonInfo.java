@@ -1,7 +1,7 @@
 public class PersonInfo
 {
 	private String name,address,email;
-	private int id, phone;
+	private int cell, phone;
 
       // default constructor
       public PersonInfo()
@@ -10,16 +10,16 @@ public class PersonInfo
          address = "";
          email = "";
 
-         id = 0;  
+         cell = 0;  
          phone = 0;
       }
 
-	public PersonInfo(int id, String name, String address, int phone, String email)
+	public PersonInfo(String name, String address, int phone, int cell, String email)
 	{
-        this.id = id;
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
+		this.cell = cell;
 		this.email = email;
 	}
  
@@ -33,9 +33,9 @@ public class PersonInfo
 	}
 
       // setters
-	public void setId(int i)
+	public void setCell(int i)
 	{
-		id = i;
+		cell = i;
 	}
 
 	public void setName(String n)
@@ -56,9 +56,9 @@ public class PersonInfo
 	}
 
       // getters
-	public int getId( )
+	public int getCell( )
 	{
-		return id;
+		return cell;
       }
 
 	public String getName()

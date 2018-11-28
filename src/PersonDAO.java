@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.sql.*;
 
@@ -62,18 +61,18 @@ public class PersonDAO{
             String pname = "";
             String address = "";
             String email = "";
-            int id, phone;
+            int cell, phone;
 
 			while(rs.next())
 			{
-                id = rs.getInt("id");
 				pname = rs.getString("name");
 				address = rs.getString("address");
 				phone = rs.getInt("phone");
+//				cell = rs.getCell("cell");
 				email = rs.getString("email");
 
 				//Create a PersonInfo object
-				PersonInfo person = new PersonInfo(id, pname, address, phone, email);
+				PersonInfo person = new PersonInfo(pname, address, phone, /*cell*/ email);
 
 				//Add the person object to array list
 				personsList.add(person);
@@ -113,7 +112,7 @@ public class PersonDAO{
 		try
 		{
 			String sql = "UPDATE Person SET name = ?, address=? , " +
-					"phone=? , email=? where id=?";
+					"phone=? , email=? where cell=?";
 
 			// Create a Prepared statement
  			PreparedStatement ps = con.prepareStatement(sql);
@@ -122,7 +121,7 @@ public class PersonDAO{
 			ps.setString(2 , person.getAddress());
 			ps.setInt(3 , person.getPhone());
 			ps.setString(4 , person.getEmail());
-			ps.setInt(5 , person.getId());
+			ps.setInt(5 , person.getCell());
 
 			ps.executeUpdate();
 		}
