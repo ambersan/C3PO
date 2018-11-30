@@ -39,7 +39,7 @@ public class PersonDAO{
 		}
 
 		try {
-			con = DriverManager.getConnection(url, userid, password);
+			con = DriverManager.getConnection(http://localhost/phpmyadmin, obi_wan, onlyhope);
 		} catch(SQLException ex) {
 			System.err.println("SQLException: " + ex.getMessage());
 		}
