@@ -87,6 +87,12 @@ public void addNote (String s){
 		return n.getNoteContent(name);
 	}
 
+	public void updateContent (String content, String title){
+		NotebookDAO n = new NotebookDAO();
+		String x =  "update NoteBook set Content = '" + content + "' where Name = '" + title + "'";
+		n.runQuery(x);
+	}
+
 
 
 }
