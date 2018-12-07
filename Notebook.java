@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Notebook 
 {
@@ -77,9 +79,19 @@ public void addNote (String s){
 	n.runQuery(x);
 	}
 
-	public ResultSet getTitles(){
+	public ArrayList<String> getTitles(){
+		ArrayList<String> s = new ArrayList<String>();
 		NotebookDAO n = new NotebookDAO();
-		return n.getNoteTitles();
+		s.add("Enter new title or select from list");
+		ResultSet rs = n.getNoteTitles();
+		try {
+			while (rs.next()) {
+				s.add(rs.getString(1));
+			}
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+				return s;
 	}
 
 	public ResultSet getContent(String name){
