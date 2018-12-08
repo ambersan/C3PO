@@ -10,6 +10,7 @@ public class Task
 	public Task()
 	{
 		this.label = null;
+		this.isSelected = false;
 	}
 
 	public void setDescription(String label) 

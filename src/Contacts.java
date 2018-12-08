@@ -311,7 +311,6 @@ public class Contacts implements ActionListener
 	{
 		if(recordNumber >= 0 && recordNumber < personsList.size())
 		{
-			int id;
 			//if the record is within the list of persons, get it for the UI
 			PersonInfo person = (PersonInfo) personsList.get(recordNumber);
 			

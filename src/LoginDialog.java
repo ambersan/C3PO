@@ -9,12 +9,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
 public class LoginDialog extends JDialog
 {
 	JLabel userName = new JLabel("Name: ");
@@ -97,9 +91,18 @@ public class LoginDialog extends JDialog
 					String user = name.getText();
 					@SuppressWarnings("deprecation")
 					String password = pass.getText();
-
-					//pass on the strings here
-					LoginDialog.this.setVisible(false);
+					
+					//CHECK HERE THAT THE STRINGS ARE THE EXPECTED LOGIN DETAILS
+					if(user.equals("obi_wan") || password.equals("onlyhope"))
+					{
+						//pass on the strings here
+						LoginDialog.this.setVisible(false);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "This is not the user I am looking for");
+						System.exit(0);
+					}
 
 				}//end comparison
 			}//end keyPressed
@@ -116,8 +119,18 @@ public class LoginDialog extends JDialog
 				String password = pass.getText();
 
 
-				//pass on the strings here
-				LoginDialog.this.setVisible(false);
+				//CHECK HERE THAT THE STRINGS ARE THE EXPECTED LOGIN DETAILS
+				if(user.equals("obi_wan") || password.equals("onlyhope"))
+				{
+					//pass on the strings here
+					LoginDialog.this.setVisible(false);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "This is not the user I am looking for");
+					System.exit(0);
+				}
+				
 			}
 		}//end ActionListener
 				);//end add
@@ -128,6 +141,7 @@ public class LoginDialog extends JDialog
 			public void actionPerformed( ActionEvent e)
 			{
 				LoginDialog.this.setVisible(false);
+				System.exit(0);
 			}
 		}//end ActionListener
 				);//end add
