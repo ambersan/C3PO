@@ -7,13 +7,13 @@ public class PersonInfoTest {
     PersonInfo p;
     @Before
     public void initialize(){
-        p = new PersonInfo(5555, "Jeff", "1234 Peach St.", 7777777, "babe@gmail.com");
+        p = new PersonInfo("Jeff", "1234 Peach St.", 7777777, 9999999, "babe@gmail.com");
     }
 
     @Test
-    public void setId() {
-        p.setId(1234);
-        assertEquals(1234, p.getId());
+    public void setCell() {
+        p.setCell(1234);
+        assertEquals(1234, p.getCell());
     }
 
     @Test
@@ -41,8 +41,8 @@ public class PersonInfoTest {
     }
 
     @Test
-    public void getId() {
-        assertEquals(5555, p.getId());
+    public void getCell() {
+        assertEquals(5555, p.getCell());
     }
 
     @Test
