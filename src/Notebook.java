@@ -103,7 +103,7 @@ public class Notebook
 		String chosen = (String) dropDown.getSelectedItem();
 
 		//hand the 'chosen' title to a database method that returns the note as a string
-		content_on_screen = getContent(chosen);
+		content_on_screen = getContent(chosen).toString();
 
 		//note text field is updated 
 		note.setText(content_on_screen);
