@@ -190,14 +190,14 @@ public class Notebook
 		}
 	}
 
-	public void remove(String s) {
+	public void remove(String t) {
 		NotebookDAO n = new NotebookDAO();
-		String x = "delete * from NoteBook where Content = '" + s + "'";
+		String x = "delete * from NoteBook where Title = '" + t + "'";
 		n.runQuery(x);
 	}
-	public void addNote (String s){
+	public void addNote (String t, String c){
 		NotebookDAO n = new NotebookDAO();
-		String x = "insert into table NoteBook values ('" + s + "')";
+		String x = "insert into table NoteBook values ('"+ t + "', '" + c + "')";
 		n.runQuery(x);
 	}
 
