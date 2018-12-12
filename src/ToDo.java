@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Panel;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -29,7 +31,7 @@ public class ToDo implements ActionListener
 		JFrame frame;
 		JButton newListBTN;
 		JButton addTaskBTN;
-		JPanel taskPane;
+		static JPanel taskPane;
 		JLabel title;
 		JLabel taskName;
 		JTextField input;
@@ -38,13 +40,8 @@ public class ToDo implements ActionListener
 		String taskInput;
 		String desc = new String();
 		
-		public ToDo()
-		{
-			createAndShowGUI();	
-		}
 		
-		
-		private static void createAndShowGUI() 
+		public ToDo() 
 		{
 			//*CREATE AND SET UP THE WINDOW
 			//Ask for window decorations provided by the look and feel
@@ -61,18 +58,42 @@ public class ToDo implements ActionListener
 			//*CREATE THE COMPONENTS
 			JButton newListBTN = new JButton("Refresh List");
 			newListBTN.setFont(new Font("Arial", Font.PLAIN, 15));
+			newListBTN.setMaximumSize(new Dimension(200, 30));
+			
+			JButton addTaskBTN = new JButton("Add Task");
+			addTaskBTN.setFont(new Font("Arial", Font.PLAIN, 15));
+			addTaskBTN.setMaximumSize(new Dimension(200, 30));
+			
+			//add button listeners
+	    	newListBTN.addActionListener(this);
+	    	addTaskBTN.addActionListener(this);
 			
 			JLabel title = new JLabel("To Do List");
 			title.setFont(new Font("Arial", Font.BOLD, 20));
 			title.setForeground(Color.YELLOW);
 			
+			JLabel taskName = new JLabel("New Task");
+			JTextField input = new JTextField();
+			
 			JPanel buttonPane = new JPanel();
+			buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.Y_AXIS));
 			buttonPane.add(newListBTN);
+			buttonPane.add(addTaskBTN);
+			buttonPane.add(taskName);
+			buttonPane.add(input);
 			
 			JPanel titlePane = new JPanel();
 			titlePane.setBackground(Color.DARK_GRAY);
 			titlePane.add(title);
 			
+			taskPane = new JPanel();
+			taskPane.setLayout(new BoxLayout(taskPane, BoxLayout.Y_AXIS));
+			taskPane.repaint();
+			
+			frame.pack();
+			frame.setVisible(true);
+			
+			/*
 			JTextField field;
 			JPanel pane;
 			
@@ -89,12 +110,13 @@ public class ToDo implements ActionListener
 					}
 				}//end ActionListener
 			);//end add
-			
+			*/
 			
 			
 			//*ADD COMPONENTS TO THE FRAME		
 			frame.getContentPane().add(buttonPane, BorderLayout.WEST);
 			frame.getContentPane().add(titlePane, BorderLayout.NORTH);
+			frame.getContentPane().add(taskPane);
 			
 			
 			//*SIZE THE FRAME
@@ -119,6 +141,7 @@ public class ToDo implements ActionListener
 				list.add(task);
 			}
 			
+			
 			//add each task to a check box item
 			for(Object t : list)
 			{
@@ -129,6 +152,8 @@ public class ToDo implements ActionListener
 			
 			//add the panel to the frame to overwrite previous frame
 			f.add(p);
+			
+			
 			
 		}
 

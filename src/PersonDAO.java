@@ -1,11 +1,12 @@
-import java.util.*;
 import java.sql.*;
+import java.util.*;
 
-public class PersonDAO{      
+public class PersonDAO
+{      
 	
 	/* Person Table needs to be created in the Oracle Database.
 	 * create table Person (
-	id Integer,
+	cell Integer,
 	name Varchar(30),
 	address Varchar(30),
 	phone Integer,
@@ -22,16 +23,17 @@ public class PersonDAO{
 	private Connection con;
 
      // constructor 
-	public PersonDAO(){
+	public PersonDAO()
+	{
 		personsList = new ArrayList();
 		getConnection();		//Create Connection to the Oracle Database
 	}
 
-	public Connection getConnection(){
+	public Connection getConnection()
+	{
 		
-		/*
 		try {
-			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");	
+			Class.forName("org.sqlite.JDBC");	
 
 		} catch(java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
@@ -39,19 +41,19 @@ public class PersonDAO{
 		}
 
 		try {
-			con = DriverManager.getConnection(http://localhost/phpmyadmin, obi_wan, onlyhope);
+			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam\\Downloads\\C3PO.sqlite");
 		} catch(SQLException ex) {
 			System.err.println("SQLException: " + ex.getMessage());
 		}
 		
-		*/
+		
 		return con;
 	}
 
 	public ArrayList searchPerson(String name)
 	{
 		try	{
-			String sql = "SELECT * FROM Person WHERE name like '%"+name+"%'";
+			String sql = "SELECT * FROM Contacts WHERE name like '%"+name+"%'";
 
 			// Create a prepared statement
  			Statement s = con.createStatement();
@@ -68,11 +70,11 @@ public class PersonDAO{
 				pname = rs.getString("name");
 				address = rs.getString("address");
 				phone = rs.getInt("phone");
-//				cell = rs.getCell("cell");
+				cell = rs.getInt("cell");
 				email = rs.getString("email");
 
 				//Create a PersonInfo object
-				PersonInfo person = new PersonInfo(pname, address, phone, /*cell*/ email);
+				PersonInfo person = new PersonInfo(pname, address, phone, cell, email);
 
 				//Add the person object to array list
 				personsList.add(person);
@@ -89,8 +91,8 @@ public class PersonDAO{
 	public void savePerson(PersonInfo person){
 		try
 		{
-			String sql = "INSERT INTO Person(name, address, " +
-							"phone, email) VALUES (?,?,?,?) ";
+			String sql = "INSERT INTO Contacts(name, address, " +
+							"phone, cell, email) VALUES (?,?,?,?) ";
 
 			// Create a Preparedstatement
  			PreparedStatement ps = con.prepareStatement(sql);
@@ -98,6 +100,7 @@ public class PersonDAO{
 			ps.setString(1, person.getName());
 			ps.setString(2, person.getAddress());
 			ps.setInt(3, person.getPhone());
+			ps.setInt(3, person.getCell());
 			ps.setString(4, person.getEmail());
 
 			ps.executeUpdate();
@@ -111,7 +114,7 @@ public class PersonDAO{
 	{
 		try
 		{
-			String sql = "UPDATE Person SET name = ?, address=? , " +
+			String sql = "UPDATE Contacts SET name = ?, address=? , " +
 					"phone=? , email=? where cell=?";
 
 			// Create a Prepared statement
@@ -133,7 +136,7 @@ public class PersonDAO{
 	public int removePerson(String name){
         int no = 0;
 		try{
-			String sql = "DELETE FROM Person WHERE name = ?";
+			String sql = "DELETE FROM Contacts WHERE name = ?";
 			// Create a Prepared statement
  			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, name);

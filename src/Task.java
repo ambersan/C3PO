@@ -12,6 +12,12 @@ public class Task
 		this.label = null;
 		this.isSelected = false;
 	}
+	
+	public Task(String l)
+	{
+		this.label = l;
+		this.isSelected = false;
+	}
 
 	public void setDescription(String label) 
 	{
@@ -40,7 +46,7 @@ public class Task
 		if(isSelected)
 		{
 			TaskDAO bluh = new TaskDAO();
-			String s = "delete * from to_do where content = '" + desc + "'";
+			String s = "delete * from To_Do where Content = '" + desc + "'";
 			bluh.runQuery(s);
 		}
 	}
@@ -54,7 +60,7 @@ public class Task
 
 	public void addTask(String desc){
 		TaskDAO b = new TaskDAO();
-		String s = "insert into table to_do values ('" + desc + "')";
+		String s = "insert into table To_Do values ('" + desc + "')";
 		b.runQuery(s);
 	}
 }

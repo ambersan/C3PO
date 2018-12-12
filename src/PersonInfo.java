@@ -22,7 +22,7 @@ public class PersonInfo
 		this.cell = cell;
 		this.email = email;
 	}
- 
+/* 
       // param construcrtor with 4 values 
 	public PersonInfo(String name, String address, int phone, String email)
 	{
@@ -31,7 +31,7 @@ public class PersonInfo
 		this.phone = phone;
 		this.email = email;
 	}
-
+*/
       // setters
 	public void setCell(int i)
 	{

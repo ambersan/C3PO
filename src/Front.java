@@ -14,7 +14,6 @@ public class Front extends ButtonClickListener
 	int BGred = 0;
 	int BGblue = 0;
 	int BGgreen = 0;
-
 	int FGred = 255;
 	int FGblue = 255;
 	int FGgreen = 255;

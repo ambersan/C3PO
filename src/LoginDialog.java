@@ -93,7 +93,7 @@ public class LoginDialog extends JDialog
 					String password = pass.getText();
 					
 					//CHECK HERE THAT THE STRINGS ARE THE EXPECTED LOGIN DETAILS
-					if(user.equals("obi_wan") || password.equals("onlyhope"))
+					if(user.equals("obi_wan") && password.equals("onlyhope"))
 					{
 						//pass on the strings here
 						LoginDialog.this.setVisible(false);

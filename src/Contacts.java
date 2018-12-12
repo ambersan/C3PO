@@ -20,7 +20,7 @@ public class Contacts implements ActionListener
 	JLabel Name, Address, Phone, Email, Cell;
 	JTextField fName, fAddress, fPhone, fEmail, fCell;
 	JButton saveBTN, deleteBTN, clearBTN, updateBTN, searchBTN, forwardBTN, backBTN, exitBTN;
-	String name, address, email;
+	String name, address, email, tempname;
 	int phone, cell;
 	int recordNumber;
 	Container cPane;
@@ -254,8 +254,8 @@ public class Contacts implements ActionListener
 	//methods to handle data entered into the fields
 	public void savePerson()
 	{
-		name = fName.getText();
-		name = name.toUpperCase();		//if all names are upper-case they are easier to handle
+		tempname = fName.getText();
+		name = tempname.toUpperCase();		//if all names are upper-case they are easier to handle
 		
 		address = fAddress.getText();
 		email = fEmail.getText();
@@ -293,8 +293,8 @@ public class Contacts implements ActionListener
 	
 	public void deletePerson()
 	{
-		name = fName.getText();
-		name = name.toUpperCase();
+		tempname = fName.getText();
+		name = tempname.toUpperCase();
 		
 		if(name.equals(""))
 		{

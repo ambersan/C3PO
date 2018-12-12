@@ -21,7 +21,7 @@ public class Notebook
 	JScrollPane scroll;
 	JPanel pane;
 	JFrame frame;
-	ArrayList<String> titles;
+	ArrayList<String> titles = new ArrayList<String>();
 	String[] cbTitles = new String[1000];
 	JComboBox<String> dropDown;
 	String chosen = "";
@@ -87,7 +87,7 @@ public class Notebook
 		//fill title combo box with arraylist of titles
 		for (int i = 0; i < cbTitles.length; i++)
 		{
-			if(cbTitles[i] != "")
+			if(cbTitles[i] != null)
 			{
 				cbTitles[i] = titles.get(i);
 			}

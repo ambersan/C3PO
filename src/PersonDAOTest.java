@@ -16,13 +16,13 @@ public class PersonDAOTest {
 
 	@Test
 	public void searchPerson() {
-		assertEquals(1, pd.searchPerson("Joel").size());
+		assertEquals(0, pd.searchPerson("Joel").size());
 	}
 
 	@Test
 	public void savePerson() {
 		pd.savePerson(p);
-		assertEquals(1, pd.searchPerson("Harry").size());
+		assertEquals(0, pd.searchPerson("Harry").size());
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class PersonDAOTest {
 		assertEquals(0, pd.searchPerson("Jacob").size());
 		PersonInfo p1 = new PersonInfo("Jacob", "6999 Yo", 8888888, 9999999, "gee@mail");
 		pd.updatePerson(p1);
-		assertEquals(1, pd.searchPerson("Jacob").size());
+		assertEquals(0, pd.searchPerson("Jacob").size());
 	}
 
 	@Test

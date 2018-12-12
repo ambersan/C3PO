@@ -7,7 +7,7 @@ public class PersonInfoTest {
     PersonInfo p;
     @Before
     public void initialize(){
-        p = new PersonInfo("Jeff", "1234 Peach St.", 7777777, 9999999, "babe@gmail.com");
+        p = new PersonInfo("Jeff", "1234 Peach St.", 7777777, 5555, "babe@gmail.com");
     }
 
     @Test
