@@ -192,7 +192,7 @@ public class Notebook
 
 	public void remove(String t) {
 		NotebookDAO n = new NotebookDAO();
-		String x = "delete * from NoteBook where Title = '" + t + "'";
+		String x = "delete * from NoteBook where Name = '" + t + "'";
 		n.runQuery(x);
 	}
 	public void addNote (String t, String c){
