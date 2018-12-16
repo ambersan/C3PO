@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -41,7 +40,6 @@ public class Notebook
 		});
 	}
 
-
 	private void createAndShowGUI() 
 	{
 		JTextField fNote = new JTextField(500);	
@@ -67,7 +65,7 @@ public class Notebook
 		note.setEditable(true);
 		note.setLineWrap(true);
 		//note.setWrapStyleWord(true);
-		
+
 		scroll = new JScrollPane(note);
 		System.out.println("Scroll pane added text area successfully");
 		pane = new JPanel();
@@ -109,17 +107,17 @@ public class Notebook
 		//*SIZE THE FRAME
 		frame.setSize(550, 300);
 
-
 		//*SHOW THE FRAME
 		frame.setVisible(true);
 	}
 
 	//when button is clicked
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		if(e.getSource() == addBTN)
 		{
 			System.out.println("Made it into button click : ADD");
-			
+
 			//get title value
 			title = (String) dropDown.getSelectedItem();
 
@@ -130,11 +128,11 @@ public class Notebook
 			addNote(title, content);
 
 			//leave the title and content on the screen
-
-		}else if(e.getSource() == deleteBTN)
+		}
+		else if(e.getSource() == deleteBTN)
 		{
 			System.out.println("Made it into button click : DELETE");
-			
+
 			//get title value
 			title = (String) dropDown.getSelectedItem();
 
@@ -145,10 +143,11 @@ public class Notebook
 			dropDown.removeItem(title);
 			note.setText("");
 
-		}else if(e.getSource() == saveBTN)
+		}
+		else if(e.getSource() == saveBTN)
 		{
 			System.out.println("Made it into button click : SAVE");
-			
+
 			//get title value
 			title = (String) dropDown.getSelectedItem();
 
@@ -159,10 +158,11 @@ public class Notebook
 			updateContent(content, title);
 
 			//leave the title and content on the screen
-		}else if(e.getSource() == dropDown)
+		}
+		else if(e.getSource() == dropDown)
 		{
 			System.out.println("DROPDOWN registered");
-			
+
 			//clear the old dropDown from screen
 			frame.remove(dropDown);
 
@@ -185,38 +185,47 @@ public class Notebook
 		}
 	}
 
-	public void remove(String t) {
+	public void remove(String t) 
+	{
 		NotebookDAO n = new NotebookDAO();
 		String x = "delete * from NoteBook where Name = '" + t + "'";
 		n.runQuery(x);
 	}
-	public void addNote (String t, String c){
+	public void addNote (String t, String c)
+	{
 		NotebookDAO n = new NotebookDAO();
 		String x = "insert into table NoteBook values ('"+ t + "', '" + c + "')";
 		n.runQuery(x);
 	}
 
-	public ArrayList<String> getTitles(){
+	public ArrayList<String> getTitles()
+	{
 		ArrayList<String> s = new ArrayList<String>();
 		NotebookDAO n = new NotebookDAO();
 		s.add("Enter new title or select from list");
 		ResultSet rs = n.getNoteTitles();
-		try {
-			while (rs.next()) {
+		try 
+		{
+			while (rs.next()) 
+			{
 				s.add(rs.getString(1));
 			}
-		}catch(SQLException e){
+		}
+		catch(SQLException e)
+		{
 			System.out.println(e);
 		}
 		return s;
 	}
 
-	public ResultSet getContent(String name){
+	public ResultSet getContent(String name)
+	{
 		NotebookDAO n = new NotebookDAO();
 		return n.getNoteContent(name);
 	}
 
-	public void updateContent (String content, String title){
+	public void updateContent (String content, String title)
+	{
 		NotebookDAO n = new NotebookDAO();
 		String x =  "update NoteBook set Content = '" + content + "' where Name = '" + title + "'";
 		n.runQuery(x);

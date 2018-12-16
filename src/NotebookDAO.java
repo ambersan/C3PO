@@ -1,7 +1,6 @@
 import java.sql.*;
 import java.util.ArrayList;
 
-
 public class NotebookDAO 
 {
 	private Connection conn;
@@ -15,62 +14,74 @@ public class NotebookDAO
 	public Connection getConnection()
 	{
 
-		try {
+		try 
+		{
 			Class.forName("org.sqlite.JDBC");	
 
-		} catch(java.lang.ClassNotFoundException e) {
+		} 
+		catch(java.lang.ClassNotFoundException e) 
+		{
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
 		}
-
-		try {
+		try 
+		{
 			//Laptop: C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite
 			//Main PC: C:\\Users\\Adam\\Downloads\\C3PO.sqlite
 			conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite");
-		} catch(SQLException ex) {
+		} 
+		catch(SQLException ex) 
+		{
 			System.err.println("SQLException: " + ex.getMessage());
 		}
-
 
 		return conn;
 	}
 
-	public int runQuery(String s){
+	public int runQuery(String s)
+	{
 
 		int i = 0;
-		try{
+		try
+		{
 			PreparedStatement st = conn.prepareStatement(s);
 			i = st.executeUpdate();
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e)
+		{
 			System.out.println(e);
 		}
 		return i;
 	}
 
-
-	public ResultSet getNoteTitles(){
+	public ResultSet getNoteTitles()
+	{
 		ResultSet rs = null;
-		try{
+		try
+		{
 			Statement st = conn.createStatement();
 			rs = st.executeQuery("select Name from NoteBook");
-		}catch (SQLException e){
+		}
+		catch (SQLException e)
+		{
 			System.out.println(e);
 		}
-
 		return rs;
 	}
 
-	public ResultSet getNoteContent(String s){
+	public ResultSet getNoteContent(String s)
+	{
 		ResultSet rs = null;
-		try{
+		try
+		{
 			Statement st = conn.createStatement();
 			rs = st.executeQuery("select Content from NoteBook where Name = '" + s + "'");
-		}catch(SQLException e){
+		}
+		catch(SQLException e)
+		{
 			System.out.println(e);
 		}
 		return rs;
 	}
-
-
 }

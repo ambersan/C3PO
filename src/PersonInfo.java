@@ -1,21 +1,19 @@
 
-//Tested and works
-
 public class PersonInfo
 {
 	private String name,address,email;
 	private int cell, phone;
 
-      // default constructor
-      public PersonInfo()
-      {       
-         name = "";
-         address = "";
-         email = "";
+	// default constructor
+	public PersonInfo()
+	{       
+		name = "";
+		address = "";
+		email = "";
 
-         cell = 0;  
-         phone = 0;
-      }
+		cell = 0;  
+		phone = 0;
+	}
 
 	public PersonInfo(String name, String address, int phone, int cell, String email)
 	{
@@ -25,17 +23,8 @@ public class PersonInfo
 		this.cell = cell;
 		this.email = email;
 	}
-/* 
-      // param construcrtor with 4 values 
-	public PersonInfo(String name, String address, int phone, String email)
-	{
-		this.name = name;
-		this.address = address;
-		this.phone = phone;
-		this.email = email;
-	}
-*/
-      // setters
+
+	// setters
 	public void setCell(int i)
 	{
 		cell = i;
@@ -45,24 +34,27 @@ public class PersonInfo
 	{
 		name=n;		
 	}
+
 	public void setAddress(String a)
 	{
 		address=a;
 	}
+
 	public void setPhone(int ph)
 	{
 		phone=ph;
 	}
+
 	public void setEmail(String e)
 	{
 		email=e;
 	}
 
-      // getters
+	// getters
 	public int getCell( )
 	{
 		return cell;
-      }
+	}
 
 	public String getName()
 	{
@@ -83,5 +75,4 @@ public class PersonInfo
 	{
 		return email;
 	}
-
 }

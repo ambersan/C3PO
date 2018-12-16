@@ -2,7 +2,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,10 +31,8 @@ public class Front extends ButtonClickListener
 
 	private static void createAndShowGUI() 
 	{
-
 		//get user login information
 		LoginDialog loginScreen = new LoginDialog();
-
 
 		//*CREATE AND SET UP THE WINDOW
 		//Ask for window decorations provided by the look and feel
@@ -45,10 +42,8 @@ public class Front extends ButtonClickListener
 		JFrame frame = new JFrame("C3PO");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
 		//Set the frame icon to an image loaded from a file
 		frame.setIconImage(new ImageIcon("/home/campus20/aslabbek/Desktop/TeamSoftware/robot.png").getImage());
-
 
 		//*CREATE THE COMPONENTS
 		//JLabel label = new JLabel("GUI here");
@@ -96,11 +91,9 @@ public class Front extends ButtonClickListener
 		frame.getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		frame.getContentPane().add(headerPane,  BorderLayout.NORTH);
 
-
 		//*SIZE THE FRAME
 		//frame.pack();		//shrink/grows to fit
 		frame.setSize(550, 300);
-
 
 		//*SHOW THE FRAME
 		frame.setVisible(true);
@@ -114,7 +107,5 @@ public class Front extends ButtonClickListener
 				createAndShowGUI();
 			}
 		});
-
 	}//end main
-
 }

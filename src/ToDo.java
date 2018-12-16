@@ -39,7 +39,6 @@ public class ToDo implements ActionListener
 	String taskInput;
 	String desc = new String();
 
-
 	public ToDo() 
 	{
 		//*CREATE AND SET UP THE WINDOW
@@ -52,7 +51,6 @@ public class ToDo implements ActionListener
 
 		//Set the frame icon to an image loaded from a file
 		frame.setIconImage(new ImageIcon("/home/campus20/aslabbek/Desktop/TeamSoftware/robot.png").getImage());
-
 
 		//*CREATE THE COMPONENTS
 		JButton newListBTN = new JButton("Refresh List");
@@ -97,42 +95,12 @@ public class ToDo implements ActionListener
 		frame.getContentPane().add(titlePane, BorderLayout.NORTH);
 		frame.getContentPane().add(taskPane);
 
-
 		//*SIZE THE FRAME
 		frame.setSize(550, 300);
-
 
 		//*SHOW THE FRAME
 		frame.setVisible(true);
 	}
-
-	/*
-	//method to update the list
-	public void updateList (ResultSet rs, Panel p, Frame f) throws SQLException
-	{
-		int i = 0;
-		while(rs.next())
-		{
-			Task task = new Task();
-			task.setDescription(rs.getString("description"));
-			task.setSelected(false);
-
-			list.add(task);
-		}
-
-
-		//add each task to a check box item
-		for(Object t : list)
-		{
-			JCheckBox item = new JCheckBox(list.get(i).toString());
-			checkboxes.add(item);
-			p.add(item);
-		}
-
-		//add the panel to the frame to overwrite previous frame
-		f.add(p);
-	}
-*/
 
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -188,22 +156,23 @@ public class ToDo implements ActionListener
 			removeTask(desc);
 
 			//call db method to get result set rs
-			try {
+			try 
+			{
 				updateList(grabTasks());
-			} catch (SQLException e1) {
+			} 
+			catch (SQLException e1) 
+			{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-
 		}
 	}
-
 
 	//method to update the list
 	public void updateList (ResultSet rs) throws SQLException
 	{
 		System.out.println("Update method called");
-		
+
 		while(rs.next())
 		{
 			Task task = new Task();
@@ -217,9 +186,7 @@ public class ToDo implements ActionListener
 			checkboxes.add(cb1);
 			taskPane.add(cb1);
 			taskPane.validate();
-
 		}
-
 	}
 
 	//method to remove tasks
@@ -248,4 +215,5 @@ public class ToDo implements ActionListener
 		String s = "insert into table To_Do values ('" + desc + "')";
 		t.runQuery(s);
 	}
+	
 }

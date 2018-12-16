@@ -12,7 +12,7 @@ public class Task
 		this.label = null;
 		this.isSelected = false;
 	}
-	
+
 	public Task(String l)
 	{
 		this.label = l;
@@ -40,27 +40,5 @@ public class Task
 	public boolean isSelected() 
 	{
 		return isSelected;
-	}
-
-	public void remove(String desc){
-		if(isSelected)
-		{
-			TaskDAO des = new TaskDAO();
-			String s = "delete * from To_Do where Content = '" + desc + "'";
-			des.runQuery(s);
-		}
-	}
-
-	public ResultSet grabTasks(){
-
-		TaskDAO result = new TaskDAO();
-
-		return result.getTasks();
-	}
-
-	public void addTask(String desc){
-		TaskDAO b = new TaskDAO();
-		String s = "insert into table To_Do values ('" + desc + "')";
-		b.runQuery(s);
 	}
 }

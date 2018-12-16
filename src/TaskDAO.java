@@ -13,49 +13,58 @@ public class TaskDAO
 
 	public Connection getConnection()
 	{
-
-		try {
+		try 
+		{
 			Class.forName("org.sqlite.JDBC");	
 
-		} catch(java.lang.ClassNotFoundException e) {
+		} 
+		catch(java.lang.ClassNotFoundException e) 
+		{
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
 		}
-
-		try {
+		try 
+		{
 			//laptop: C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite
 			//Main PC: C:\\Users\\Adam\\Downloads\\C3PO.sqlite
 			conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite");
-		} catch(SQLException ex) {
+		} catch(SQLException ex) 
+		{
 			System.err.println("SQLException: " + ex.getMessage());
 		}
-
-
 		return conn;
 	}
 
-	public int runQuery(String s){
-
+	public int runQuery(String s)
+	{
 		int i = 0;
-		try{
+
+		try
+		{
 			PreparedStatement st = conn.prepareStatement(s);
 			i = st.executeUpdate();
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) 
+		{
 			System.out.println(e);
 		}
 		return i;
 	}
 
-	public ResultSet getTasks(){
+	public ResultSet getTasks()
+	{
 		ResultSet rs = null;
-		try{
+
+		try
+		{
 			Statement st = conn.createStatement();
 			rs = st.executeQuery("select * from To_Do limit 100");
-		}catch (SQLException e){
+		}
+		catch (SQLException e)
+		{
 			System.out.println(e);
 		}
-
 		return rs;
 	}
 }

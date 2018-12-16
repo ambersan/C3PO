@@ -29,7 +29,6 @@ public class LoginDialog extends JDialog
 
 	public void setUp()
 	{
-
 		this.setSize(400, 150);
 		this.setAlwaysOnTop(true);
 		this.setVisible(true);
@@ -39,7 +38,6 @@ public class LoginDialog extends JDialog
 
 		buttons.add(okBTN);
 		buttons.add(cancelBTN);
-		//buttons.add(newAccount);
 
 		//layout the labels and fields for the username and password
 		GridBagConstraints settings = new GridBagConstraints();
@@ -91,7 +89,7 @@ public class LoginDialog extends JDialog
 					String user = name.getText();
 					@SuppressWarnings("deprecation")
 					String password = pass.getText();
-					
+
 					//CHECK HERE THAT THE STRINGS ARE THE EXPECTED LOGIN DETAILS
 					if(user.equals("obi_wan") && password.equals("onlyhope"))
 					{
@@ -130,7 +128,7 @@ public class LoginDialog extends JDialog
 					JOptionPane.showMessageDialog(null, "This is not the user I am looking for");
 					System.exit(0);
 				}
-				
+
 			}
 		}//end ActionListener
 				);//end add
@@ -145,18 +143,5 @@ public class LoginDialog extends JDialog
 			}
 		}//end ActionListener
 				);//end add
-
-		/*
-    	newAccount.addActionListener( new ActionListener()
-			{
-				@Override 
-				public void actionPerformed( ActionEvent e)
-				{
-					//new dialog with entry fields
-				}
-			}//end ActionListener
-		);//end add
-		 */
-
 	}
 }
