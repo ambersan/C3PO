@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+//Tested and works
+
 public class Notepad {
 
 	//ArrayList of notes takes two elements--

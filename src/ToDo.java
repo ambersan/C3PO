@@ -255,7 +255,7 @@ public class ToDo implements ActionListener
 			TaskDAO t = new TaskDAO();
 			
 			//makes and runs the statement
-			String s = "delete from to_do where content = '" + desc + "'";
+			String s = "delete from To_Do where Content = '" + desc + "'";
 			t.runQuery(s);
 		}
 		
@@ -272,7 +272,7 @@ public class ToDo implements ActionListener
 		public void addTask(String desc)
 		{
 			TaskDAO t = new TaskDAO();
-			String s = "insert into table to_do values ('" + desc + "')";
+			String s = "insert into table To_Do values ('" + desc + "')";
 			t.runQuery(s);
 		}
 }

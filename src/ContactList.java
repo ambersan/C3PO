@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
+//Is this even used
+
 public class ContactList {
 //Arraylist with elements that can be ordered in any manner.
-//element has: name, number, description, address
+//element has: name, number, cell, address, email
 //Only thing required to make a new contact entry is a name.
 	
 	public static class Contact{

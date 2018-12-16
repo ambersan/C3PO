@@ -1,6 +1,8 @@
 import java.sql.*;
 import java.util.*;
 
+//Run more Tests
+
 public class PersonDAO
 {      
 	
@@ -42,7 +44,8 @@ public class PersonDAO
 
 		try {
 			//Laptop: C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite
-			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite");
+			//Main PC: C:\\Users\\Adam\\Downloads\\C3PO.sqlite
+			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam\\Downloads\\C3PO.sqlite");
 		} catch(SQLException ex) {
 			System.err.println("SQLException: " + ex.getMessage());
 		}
@@ -54,7 +57,7 @@ public class PersonDAO
 	public ArrayList searchPerson(String name)
 	{
 		try	{
-			String sql = "SELECT * FROM Contacts WHERE name like '%"+name+"%'";
+			String sql = "SELECT * FROM Contacts WHERE Name like '%"+name+"%'";
 
 			// Create a prepared statement
  			Statement s = con.createStatement();
@@ -92,8 +95,8 @@ public class PersonDAO
 	public void savePerson(PersonInfo person){
 		try
 		{
-			String sql = "INSERT INTO Contacts(name, address, " +
-							"phone, cell, email) VALUES (?,?,?,?) ";
+			String sql = "INSERT INTO Contacts(Name, Address, " +
+							"Phone, Cell, Email) VALUES (?,?,?,?,?) ";
 
 			// Create a Preparedstatement
  			PreparedStatement ps = con.prepareStatement(sql);
@@ -101,8 +104,8 @@ public class PersonDAO
 			ps.setString(1, person.getName());
 			ps.setString(2, person.getAddress());
 			ps.setInt(3, person.getPhone());
-			ps.setInt(3, person.getCell());
-			ps.setString(4, person.getEmail());
+			ps.setInt(4, person.getCell());
+			ps.setString(5, person.getEmail());
 
 			ps.executeUpdate();
 		}
@@ -115,8 +118,8 @@ public class PersonDAO
 	{
 		try
 		{
-			String sql = "UPDATE Contacts SET name = ?, address=? , " +
-					"phone=? , email=? where cell=?";
+			String sql = "UPDATE Contacts SET Name = ?, Address=? , " +
+					"Phone=? , Cell=? where Email=?";
 
 			// Create a Prepared statement
  			PreparedStatement ps = con.prepareStatement(sql);
@@ -124,8 +127,8 @@ public class PersonDAO
 			ps.setString(1 , person.getName());		
 			ps.setString(2 , person.getAddress());
 			ps.setInt(3 , person.getPhone());
-			ps.setString(4 , person.getEmail());
-			ps.setInt(5 , person.getCell());
+			ps.setInt(4 , person.getCell());
+			ps.setString(5 , person.getEmail());
 
 			ps.executeUpdate();
 		}
@@ -137,7 +140,7 @@ public class PersonDAO
 	public int removePerson(String name){
         int no = 0;
 		try{
-			String sql = "DELETE FROM Contacts WHERE name = ?";
+			String sql = "DELETE FROM Contacts WHERE Name = ?";
 			// Create a Prepared statement
  			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, name);

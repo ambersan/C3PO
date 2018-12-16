@@ -24,7 +24,8 @@ public class TaskDAO
 
 		try {
 			//laptop: C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite
-			conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite");
+			//Main PC: C:\\Users\\Adam\\Downloads\\C3PO.sqlite
+			conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam\\Downloads\\C3PO.sqlite");
 		} catch(SQLException ex) {
 			System.err.println("SQLException: " + ex.getMessage());
 		}
@@ -50,7 +51,7 @@ public class TaskDAO
 		ResultSet rs = null;
 		try{
 			Statement st = conn.createStatement();
-			rs = st.executeQuery("select * from to_do limit 100");
+			rs = st.executeQuery("select * from To_Do limit 100");
 		}catch (SQLException e){
 			System.out.println(e);
 		}

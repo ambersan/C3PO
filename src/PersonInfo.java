@@ -1,3 +1,6 @@
+
+//Tested and works
+
 public class PersonInfo
 {
 	private String name,address,email;
