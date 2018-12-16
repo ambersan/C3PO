@@ -220,7 +220,7 @@ public class Contacts implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		if(e.getSource() == deleteBTN)
+		if(e.getSource() == saveBTN)
 		{
 			savePerson();
 			clear();

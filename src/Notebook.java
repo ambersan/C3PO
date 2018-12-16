@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -188,13 +189,13 @@ public class Notebook
 	public void remove(String t) 
 	{
 		NotebookDAO n = new NotebookDAO();
-		String x = "delete * from NoteBook where Name = '" + t + "'";
+		String x = "delete from NoteBook where Name = '" + t + "'";
 		n.runQuery(x);
 	}
 	public void addNote (String t, String c)
 	{
 		NotebookDAO n = new NotebookDAO();
-		String x = "insert into table NoteBook values ('"+ t + "', '" + c + "')";
+		String x = "insert into NoteBook values ('"+ t + "', '" + LocalDateTime.now() + "', '" + c + "')";
 		n.runQuery(x);
 	}
 

@@ -30,7 +30,7 @@ public class PersonDAO
 		{
 			//Laptop: C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite
 			//Main PC: C:\\Users\\Adam\\Downloads\\C3PO.sqlite
-			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite");
+			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO2.sqlite");
 		} 
 		catch(SQLException ex) 
 		{

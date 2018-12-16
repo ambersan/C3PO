@@ -212,7 +212,7 @@ public class ToDo implements ActionListener
 	public void addTask(String desc)
 	{
 		TaskDAO t = new TaskDAO();
-		String s = "insert into table To_Do values ('" + desc + "')";
+		String s = "insert into To_Do values ('" + desc + "')";
 		t.runQuery(s);
 	}
 	
