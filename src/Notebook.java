@@ -63,12 +63,13 @@ public class Notebook
 		titles.addAll(getTitles());
 
 		note = new JTextArea(100, 100);	
-		note.setText("");
+		note.setText("Enter your note here");
 		note.setEditable(true);
 		note.setLineWrap(true);
-		note.setWrapStyleWord(true);
+		//note.setWrapStyleWord(true);
+		
 		scroll = new JScrollPane(note);
-
+		System.out.println("Scroll pane added text area successfully");
 		pane = new JPanel();
 
 		addBTN = new JButton("Add Note");
@@ -99,27 +100,13 @@ public class Notebook
 		frame.add(note, BorderLayout.CENTER);
 		frame.add(pane,  BorderLayout.SOUTH);
 
-		//get the selected item for retrieving the note
-		String chosen = (String) dropDown.getSelectedItem();
-
-		//hand the 'chosen' title to a database method that returns the note as a string
-		content_on_screen = getContent(chosen).toString();
-
-		//note text field is updated 
-		note.setText(content_on_screen);
-
-
 		//*SIZE THE FRAME
 		frame.setSize(550, 300);
 
 		//*SHOW THE FRAME
 		frame.setVisible(true);
 
-
-
-
 		//*SIZE THE FRAME
-		//frame.pack();		//shrink/grows to fit
 		frame.setSize(550, 300);
 
 
@@ -131,6 +118,8 @@ public class Notebook
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == addBTN)
 		{
+			System.out.println("Made it into button click : ADD");
+			
 			//get title value
 			title = (String) dropDown.getSelectedItem();
 
@@ -144,6 +133,8 @@ public class Notebook
 
 		}else if(e.getSource() == deleteBTN)
 		{
+			System.out.println("Made it into button click : DELETE");
+			
 			//get title value
 			title = (String) dropDown.getSelectedItem();
 
@@ -156,6 +147,8 @@ public class Notebook
 
 		}else if(e.getSource() == saveBTN)
 		{
+			System.out.println("Made it into button click : SAVE");
+			
 			//get title value
 			title = (String) dropDown.getSelectedItem();
 
@@ -168,6 +161,8 @@ public class Notebook
 			//leave the title and content on the screen
 		}else if(e.getSource() == dropDown)
 		{
+			System.out.println("DROPDOWN registered");
+			
 			//clear the old dropDown from screen
 			frame.remove(dropDown);
 

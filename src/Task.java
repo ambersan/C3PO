@@ -45,17 +45,17 @@ public class Task
 	public void remove(String desc){
 		if(isSelected)
 		{
-			TaskDAO bluh = new TaskDAO();
+			TaskDAO des = new TaskDAO();
 			String s = "delete * from To_Do where Content = '" + desc + "'";
-			bluh.runQuery(s);
+			des.runQuery(s);
 		}
 	}
 
 	public ResultSet grabTasks(){
 
-		TaskDAO eeee = new TaskDAO();
+		TaskDAO result = new TaskDAO();
 
-		return eeee.getTasks();
+		return result.getTasks();
 	}
 
 	public void addTask(String desc){

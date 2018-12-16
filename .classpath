@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="SQL/org.hamcrest.core_1.3.0.v201303031735.jar"/>
 	<classpathentry kind="lib" path="SQL/junit.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="SQL/sqlite-jdbc-3.23.1.jar"/>
 	<classpathentry kind="lib" path="SQL/sqlite-jdbc-3.7.15-M1.jar"/>
 	<classpathentry kind="lib" path="SQL/sqlite-jdbc-3.7.15-SNAPSHOT-2.jar"/>
@@ -13,5 +12,6 @@
 	<classpathentry kind="lib" path="SQL/sqlite-jdbc-3.7.2-javadoc.jar"/>
 	<classpathentry kind="lib" path="SQL/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="lib" path="SQL/sqlite-jdbc4-3.8.2-SNAPSHOT.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

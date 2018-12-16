@@ -45,7 +45,7 @@ public class PersonDAO
 		try {
 			//Laptop: C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite
 			//Main PC: C:\\Users\\Adam\\Downloads\\C3PO.sqlite
-			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam\\Downloads\\C3PO.sqlite");
+			con = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite");
 		} catch(SQLException ex) {
 			System.err.println("SQLException: " + ex.getMessage());
 		}

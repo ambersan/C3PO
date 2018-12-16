@@ -22,7 +22,7 @@ public class PersonDAOTest {
 	@Test
 	public void savePerson() {
 		pd.savePerson(p);
-		assertEquals(0, pd.searchPerson("Harry").size());
+		assertEquals(1, pd.searchPerson("Harry").size());
 	}
 
 	@Test
