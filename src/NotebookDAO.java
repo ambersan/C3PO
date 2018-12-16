@@ -24,7 +24,8 @@ public class NotebookDAO
 		}
 
 		try {
-			conn = DriverManager.getConnection("jdbc:sqlite:H:\\CS 3141\\git\\C3PO\\C3PO.sqlite");
+			//Laptop: C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite
+			conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Adam Bersano\\Downloads\\C3PO.sqlite");
 		} catch(SQLException ex) {
 			System.err.println("SQLException: " + ex.getMessage());
 		}
